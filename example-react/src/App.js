@@ -99,11 +99,14 @@ const App = () =>{
 export default App;
 
 
-
-
-
-
-
-
-
+//예제 
+// import StateForm from "./components/StateForm";
+// const App = () => {
+//     return (
+//         <div className="App">
+//             <StateForm />
+//         </div>
+//     );
+// }
+// export default App;
 

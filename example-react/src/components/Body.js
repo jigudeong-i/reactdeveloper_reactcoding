@@ -214,6 +214,24 @@
 // export default Body;
 
 
+
+
+// 이건 안 될 것이다.
+// const Body = ()  => {
+//     let count = 0;
+//     const onIncrease = () => {
+//         count++;
+//     }
+//     return(
+//         <div>
+//             <h2>{count}</h2>
+//             <button onClick={onIncrease}>1씩 증가</button>
+//         </div>
+//     );
+// };
+// export default Body;
+
+// // 이건 될 것이다.
 // import {useState} from "react";
 // const Body = () => {
 //     console.log("업데이트!");
@@ -229,9 +247,10 @@
 //     );
 // }
 // export default Body;
-// //+ 버튼을 클릭할 때마다 숫자가 1씩 늘어난다. set 함수를 호출해 State 값을 변경하면, 변경 값을 페이지에 반영하기 위해 컴포넌트를 다시 렌더링 한다. 
-// // 리액트에서는 이것을 ‘컴포넌트 업데이트’라고 한다. 컴포넌트가 페이지에 렌더링하는 값은 컴포넌트 함수의 반환값이다. 
-// // 따라서 컴포넌트를 다시 렌더링 한다는 것은 컴폰너트를 다시 호출한다라는 의미이다.
+//+ 버튼을 클릭할 때마다 숫자가 1씩 늘어난다. set 함수를 호출해 State 값을 변경하면, 변경 값을 페이지에 반영하기 위해 컴포넌트를 다시 렌더링 한다. 
+// 리액트에서는 이것을 ‘컴포넌트 업데이트’라고 한다. 컴포넌트가 페이지에 렌더링하는 값은 컴포넌트 함수의 반환값이다. 
+// 컴포넌트를 다시 렌더링한다 = 컴포너트를 다시 호출한다.
+
 
 
 // -------------------------------------------------------글 상자 입력 
@@ -259,7 +278,7 @@
 
 
 
-//----------------------------------드롭다운 상자로 여러 옵션 선택 중 하나 선택
+// //----------------------------------드롭다운 상자로 여러 옵션 선택 중 하나 선택
 // import { useState } from "react";
 // const Body = () => {
 //     const [option, setOption] = useState("");
@@ -284,43 +303,224 @@
 
 
 //useState로 State 생성
-import { useState } from "react";       // useState는 상태를 변화시키는 함수
-const Body = () => {
-    const [text, setText] = useState("");  // text의 기본값은 공백이고("") setText 형식으로 상태 변화를 주겠다.
+// import { useState } from "react";       // useState는 상태를 변화시키는 함수
+// const Body = () => {
+//     const [text, setText] = useState("");  // text의 기본값은 공백이고("") setText 형식으로 상태 변화를 주겠다.
     
-    const handleOnChange = (e) => {
-        console.log("변경된 값: ", e.target.value);
-        setText(e.target.value);         // e.target.value 로 상태변경 하겠다. value는 {text}니까 {text}가 바뀜  
+//     const handleOnChange = (e) => {
+//         console.log("변경된 값: ", e.target.value);
+//         setText(e.target.value);         // e.target.value 로 상태변경 하겠다. value는 {text}니까 {text}가 바뀜  
+//     }
+//     return (
+//         <div>                                                           
+//             <input value={text} onChange={handleOnChange} />   {/* 값이 바뀔 때마다 handleOnChange 실행(onChange) */}
+//             <div><br />{text}</div>
+//         </div>          // type 안 쓰면 기본값 text 
+//     );
+// }
+// export default Body;
+
+
+// -----------------------------------------------여러 개의 사용자 입력 관리
+// import { useState } from "react";
+// const Body = () => {
+//     const [name, setName] = useState("");
+//     const [gender, setGender] = useState("");
+//     const [birth, setBirth] = useState("");
+//     const [bio, setBio] = useState("");
+//     const onChangeName = (e) => {
+//         setName(e.target.value);
+//     };
+//     const onChangeGender = (e) => {
+//         setGender(e.target.value);
+//     };
+//     const onChangeBirth = (e) => {
+//         setBirth(e.target.value);
+//     };
+//     const onChangeBio = (e) => {
+//         setBio(e.target.value);
+//     };
+//     return (
+//         <div>
+//             <div>
+//                 <input value={name} onChange={onChangeName} placeholder="이름" />
+//             </div>
+//             <div>
+//                 <select value={gender} onChange={onChangeGender}>
+//                     <option key={""}></option>
+//                     <option key={"남성"}>남성</option>
+//                     <option key={"여성"}>여성</option>
+//                 </select>
+//             </div>
+//             <div>
+//                 <input type="date" value={birth} onChange={onChangeBirth} />
+//             </div>
+//             <div>
+//                 <textarea value={bio} onChange={onChangeBio} />
+//             </div>
+//             <h4>데이터 출력</h4>
+//             <div>
+//                 <label>이름</label> {name} <br />
+//                 <label>성별</label> {gender}<br />
+//                 <label>생년월일</label> {birth} <br />
+//                 <label>BIO</label> {bio} <br />
+//             </div>
+//         </div>
+//     );
+// }
+// export default Body; 
+
+
+
+// --------------------------------------관리할 state 개수가 많아지면 이벤트 핸들러를 하나의 객체로 묶음. 
+// import { useState } from "react";
+// const Body = () => {
+//     const [Apple, setApple] = useState({    // const[현재상태, ~로 업뎃 하겠다] = usetState(초깃값)
+//         name: "",
+//         gender: "",
+//         birth: "",
+//         bio: "",
+//     });
+//     const handleOnChange = (e) => {
+//         console.log("현재 입력 대상 : ", e.target.name);
+//         console.log("현재 입력 값 : ", e.target.value);
+//         setApple({
+//             ...Apple,
+//             [e.target.name]: e.target.value    // name을 찾아 value로 설정해주겠다. 
+//         });
+//     };
+//     return (
+//         <div>
+//             <div>
+//                 <input
+//                     name="name"
+//                     value={Apple.name}
+//                     onChange={handleOnChange}   
+//                     placeholder="이름"
+//                 />
+//             </div>
+//             <div>
+//                 ​<select name="gender" value={Apple.gender} onChange={handleOnChange}>
+//                     <option value="">선택하세요</option>
+//                     <option value="남성">남성</option>
+//                     <option value="여성">여성</option>
+//                 </select>
+//             </div>
+//             <div>
+//                 <input
+//                     name="birth"
+//                     type="date"
+//                     value={Apple.birth}
+//                     onChange={handleOnChange}
+//                 />
+//             </div>
+//             <div>
+//                 <textarea
+//                     name="bio"
+//                     value={Apple.bio}
+//                     onChange={handleOnChange}
+//                 />
+//             </div>
+//             <h4>데이터 출력</h4>
+//             <div>
+//                직접 작성해주세요~ 
+//             </div>
+//         </div>
+//     );
+// }
+// export default Body;
+
+
+// -------------------------------------------------------------[리액트] 리액트(React)_2
+// ----------------------------------------------------------Ref, useRef 사용 
+
+// import { useRef, useState } from "react";
+// const Body = () => {
+//     const[text, setText] = useState("");
+//     const textRef = useRef();  // 이걸 input 요소에 넣음으로써 input 요소에 직접적으로 접근할수 있게 되는 것. 
+//     const handleOnChange = (e) => {
+//         setText(e.target.value);      // 이 함수 역할 모르겠으면 이거를 주석처리해서 봐보라. 공백에서 입력 자체가 안 됨.
+//     }
+//     const handleOnClick = () => {
+//         alert(text);
+//     };
+//     return (
+//         <div>
+//             <div>
+//                 <input ref={textRef} value={text} onChange={handleOnChange} />          
+//                 <button onClick={handleOnClick}>작성 완료</button>
+//             </div>
+//         </div>
+//     );
+// };
+// export default Body;
+
+
+// //상태로 초기화
+// import {useState} from "react";
+// const Body = () => {
+//     const[text, setText] = useState("");
+//     const handlerOnChange = (e) => {
+//         setText(e.target.value);
+//     };
+//     const handlerOnClick = () => {
+//         alert(text);
+//         setText("");
+//     };
+
+//     return (
+//         <div>
+//             <input value={text} onChange={handlerOnChange} />
+//             <button onClick={handlerOnClick}>작성 완료</button>
+//         </div>
+//     )
+// }
+// export default Body;
+
+
+
+// //useRef로 입력 폼 초기화
+// import {useRef} from "react";
+// const Body = () => {
+//     const textRef = useRef();           // 이걸 input에 넣음으로써 직접 접근이 가능하게 됨.
+//     const handleOnClick = () => {
+//         alert(textRef.current.value);
+//         textRef.current.value = "";
+//     };
+//     return (
+//         <div>
+//             <input ref={textRef} />     
+//             <button onClick={handleOnClick}>작성 완료</button>
+//         </div>
+//     );
+// };
+// export default Body;
+
+
+
+import {useState, useRef} from "react"
+const Body = () => {
+    const [text, setText] = useState("")
+    const textRef = useRef();
+    const handlerOnChange = (e) => {
+        setText(e.target.value)
     }
-    return (
-        <div>                                                           
-            <input value={text} onChange={handleOnChange} />   {/* 값이 바뀔 때마다 handleOnChange 실행(onChange) */}
-            <div><br />{text}</div>
-        </div>          // type 안 쓰면 기본값 text 
-    );
+    const handlerOnClick = () => {
+        if(text.trim().length<5){
+            textRef.current.focus();
+        }else{
+            alert(text);
+            setText("");
+        }
+    };
+    return(
+        <div>
+            <input ref={textRef} value={text} onChange={handlerOnChange} />
+            <button onClick={handlerOnClick}>작성 완료</button>
+        </div>
+    )
 }
 export default Body;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
