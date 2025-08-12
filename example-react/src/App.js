@@ -1,5 +1,5 @@
 
-import './App.css';     // ./  는 현재경로라는 뜻. 
+import './App.css';    
 import Header from './components/Header';
 import Body from './components/Body';
 import Footer from './components/Footer';
@@ -87,16 +87,16 @@ import MyComponent from './components/MyComponent';
 // export default App;
 
 
-const App = () =>{
-  return (
-    <div className="App">
-      <Header />
-      <Body />
-      <Footer />
-    </div>
-  );
-}
-export default App;
+// const App = () =>{
+//   return (
+//     <div className="App">
+//       <Header />
+//       <Body />
+//       <Footer />
+//     </div>
+//   );
+// }
+// export default App;
 
 
 //예제 
@@ -109,4 +109,17 @@ export default App;
 //     );
 // }
 // export default App;
+
+
+
+import ItemMain from "./product/itemMain";
+
+const App = () => {
+  return(
+    <div className="App">
+      <ItemMain />
+    </div>
+  );
+}
+export default App;
 
