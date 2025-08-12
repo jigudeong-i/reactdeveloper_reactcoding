@@ -14,7 +14,7 @@ const ItemInput = ({form, handleChange, onCreate}) => {
                             type="text"
                             name="name"
                             value={name}
-                            onChange={handleChange}
+                            onChange={handleChange}   // onChange : 값이 바뀔때 실행할 함수를 지정
                         />
                     </td>
                 </tr>

@@ -22,28 +22,28 @@ const ItemMain = () => {
         },
     ];
    
-    //새로운 상품 등록
 
+    //새로운 상품 등록
    const[form, setForm] = useState({
         name:"",
         price:0,
         quantity:0,
     });
-
     const handleChange = (e) => {
         const{name, value} = e.target;
-        setForm(
-            {...form, [name]:value
+        setForm(            // setForm 지워봐. 입력 자체가 안 됨.
+            {...form,       
+            [name]:value    // name이 가리키는 속성만 value 로 바꿈. (대괄호 표기 : 계산된 속성 문법) 
             }
         );
     };
 
+    
     const[items, setItems] = useState(itemDataArray); 
     const onCreate = () => {
-        setItems([...items, form]);
+        setItems([...items, form]);         // 등록 버튼 누르면 목록에 추가 
         alert("새로운 상품이 등록되었습니다~");
     };
-
 
     return(   
         <>
