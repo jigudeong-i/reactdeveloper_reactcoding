@@ -112,14 +112,26 @@ import MyComponent from './components/MyComponent';
 
 
 
-import ItemMain from "./product/itemMain";
+// import ItemMain from "./product/itemMain";
+
+// const App = () => {
+//   return(
+//     <div className="App">
+//       <ItemMain />
+//     </div>
+//   );
+// }
+// export default App;
+
+
+
+import NoticeMain from "./notice/NoticeMain";
 
 const App = () => {
-  return(
+  return (
     <div className="App">
-      <ItemMain />
+      <NoticeMain />
     </div>
   );
 }
 export default App;
-

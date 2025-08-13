@@ -21,7 +21,8 @@ const ItemMain = () => {
             quantity:2
         },
     ];
-   
+    
+    const[items, setItems] = useState(itemDataArray); 
 
     //새로운 상품 등록
    const[form, setForm] = useState({
@@ -37,9 +38,6 @@ const ItemMain = () => {
             }
         );
     };
-
-    
-    const[items, setItems] = useState(itemDataArray); 
     const onCreate = () => {
         setItems([...items, form]);         // 등록 버튼 누르면 목록에 추가 
         alert("새로운 상품이 등록되었습니다~");
