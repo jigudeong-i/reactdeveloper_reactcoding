@@ -32,7 +32,7 @@ const ItemMain = () => {
     });
     const handleChange = (e) => {
         const{name, value} = e.target;
-        setForm(            // setForm 지워봐. 입력 자체가 안 됨.
+        setForm(            // setForm 지워봐. 커서는 있는데 입력이 안 됨.
             {...form,       
             [name]:value    // name이 가리키는 속성만 value 로 바꿈. (대괄호 표기 : 계산된 속성 문법) 
             }
@@ -51,7 +51,7 @@ const ItemMain = () => {
             <ItemList items={items}/>
             <ItemTotal items={items}/>
         </>
-    );     // handleChange라는 변수를 handleChange라는 이름으로 전달. ItemInput 안에서는 props.handleChange로 가능
+    );     
 };
 export default ItemMain;
 

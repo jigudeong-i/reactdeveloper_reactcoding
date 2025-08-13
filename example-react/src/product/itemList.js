@@ -5,7 +5,7 @@ import Item from "./item";
 const ItemList = ({items})=>{
     return(
         <ul>
-            {/* item이라는 props 값 지정 */}
+            {/* item이라는 props 값 지정 */} 
             {items.map((item) =>(
                 <Item key={item.name} item={item}/>
             ))}
