@@ -28,11 +28,11 @@ const TodoList = ({todo, onUpdate, onDelete}) => {
             <div className="list_wrapper">
                 { getSearchResult().map((it) => (           
                     <TodoItem 
-                    key={it.id}
-                    {...it} 
-                    onUpdate={onUpdate}  // 리스트에 모든 자식 요소는 key라는 고유한 prop을 반드시 가져야 한다.
-                    onDelete={onDelete}               // 이 key로 어떤 컴포넌트를 CRUD 작업할지 결정하기 때문.
-                />
+                        key={it.id}
+                        {...it} 
+                        onUpdate={onUpdate}  // 리스트에 모든 자식 요소는 key라는 고유한 prop을 반드시 가져야 한다.
+                        onDelete={onDelete}               // 이 key로 어떤 컴포넌트를 CRUD 작업할지 결정하기 때문.
+                    />
                 ))}                               
             </div>
         </div>

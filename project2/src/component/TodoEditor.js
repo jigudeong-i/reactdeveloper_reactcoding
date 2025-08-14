@@ -1,26 +1,26 @@
 import { useRef, useState } from 'react';
-import './TodoEditor.css'
+import './TodoEditor.css';
 
 const TodoEditor = ({onCreate}) => {
     const[content, setContent] = useState("");
     const inputRef = useRef();    
 
     const onChangeContent = (e) => {
-        setContent(e.target.value);     //input의 content 요소
+        setContent(e.target.value);     
     };
 
-    const onSubmitContent = () => {
-        if (!content.trim()) {      //기본값은 false. 즉, !이면 true : '비어있지 않으면'
-            inputRef.current.focus();    //커서를 주겠다.
+    const onSubmitContent = () => {       // " 안녕 ".trim() => "안녕"
+        if (!content.trim()) {          // trim():앞뒤 공백 제거. 조건문 기본값은 false인데 부정이니까 true : '비어있으면'
+            inputRef.current.focus();    // current:ref가 연결된 dom요소. 커서를 주겠다.
             alert("할 일을 입력하세요");
             return;
         }
-        onCreate(content);
-        setContent("");             // 공백으로 초기화
+        onCreate(content);              // if에 안 걸리면 onCreate, 즉 할일 추가 하고 
+        setContent("");                 // 공백으로 초기화하겠다.
     };
 
-     const onKeyDown = (e) => {     //엔터를 누르면 함수 호출 
-        if (e.key === 'Enter') {
+    const onKeyDown = (e) => {     //엔터를 누르면 함수 호출 
+        if (e.key === "Enter") {
             onSubmitContent();
         }
     };
