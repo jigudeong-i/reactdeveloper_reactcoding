@@ -23,10 +23,11 @@
 // export default Editor;
 
 import './Editor.css'
-import { useState } from "react"
-import { getFormattedDate } from "../util";
+import { useEffect, useState } from "react"
+import { emotionList, getFormattedDate } from "../util";
 import Button from './Button';
 import { useNavigate } from 'react-router-dom';
+import EmotionItem from './EmotionItem';
 
 const Editor = ({initData, onSubmit}) => {
     const navigate = useNavigate();
@@ -36,10 +37,26 @@ const Editor = ({initData, onSubmit}) => {
         content:"",
     });
 
+    useEffect(() => {
+        if(initData){
+            setState({
+                ...initData,
+                date:getFormattedDate(new Date(parseInt(initData.date))),
+            });
+        }
+    }, [initData]);
+
     const handlechangeDate = (e) => {
         setState({
             ...state,
             date:getFormattedDate(new Date(e.target.value)),
+        });
+    };
+
+    const handleChangeEmotion = (emotionId) => {
+        setState({
+            ...state,
+            emotionId,
         });
     };
 
@@ -71,6 +88,15 @@ const Editor = ({initData, onSubmit}) => {
             </div>
             <div className="editor_section">
                 <h4>오늘의 감정</h4>
+                <div className='input_wrapper emotion_list_wrapper'>
+                    {emotionList.map((it)=>(
+                        <EmotionItem key={it.id} 
+                        {...it}
+                        onClick={handleChangeEmotion}
+                        isSelected={state.emotionId===it.id}/>
+                    ))}
+
+                </div>
             </div>
             <div className="editor_section">
                 <h4>오늘의 일기</h4>
@@ -97,3 +123,8 @@ const Editor = ({initData, onSubmit}) => {
     );
 };
 export default Editor;
+
+//useEffect에 첫 번째 인수로 전달한 콜백 함수는 initData 값이 변경될 때마다 실행된다.
+//useEffect의 콜백 함수가 실행될 때 initData가 false 값이면 부모 컴포넌트에서 
+//정상적인 initData를 받지 못한 경우이므로 아무런 일도 일어나지 않는다. 
+//그러나 true 값이면 if문을 실행한다. State를 업데이트한다. 
