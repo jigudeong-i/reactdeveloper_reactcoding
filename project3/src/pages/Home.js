@@ -5,6 +5,7 @@ import Header from "../component/Header"
 import { useContext, useEffect, useState } from "react";
 import { DiaryStateContext } from "../App";
 import { getMonthRangeByDate } from "../util";
+import DiaryList from "../component/DiaryList";
 
 // const Home = () => {
 //     const[searchParmas, setSearchParams] = useSearchParams();
@@ -103,7 +104,7 @@ import { getMonthRangeByDate } from "../util";
 
 
 const Home = () => {
-     const data = useContext(DiaryStateContext);
+    const data = useContext(DiaryStateContext);
     const [filteredData, setFilteredData] = useState([]);
     const [pivotDate, setPivotDate] = useState(new Date());
     const headerTitle = `${pivotDate.getFullYear()}년 ${pivotDate.getMonth() + 1}월`;
@@ -134,6 +135,7 @@ const Home = () => {
                 leftChild={<Button text={"<"} onClick={onDecreaseMonth} />}
                 rightChild={<Button text={">"} onClick={onIncreaseMonth} />}
             />
+            <DiaryList data={filteredData}/>
         </div>
     );
 };

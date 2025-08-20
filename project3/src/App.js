@@ -1,6 +1,6 @@
 
 import './App.css';
-import {Routes, Route, Link} from 'react-router-dom';
+import {Routes, Route} from 'react-router-dom';
 import React, { useEffect, useReducer, useRef, useState } from 'react';
 import Home from './pages/Home';
 import New from './pages/New';
@@ -35,7 +35,7 @@ function reducer(state, action){
     case "INIT":{
       return action.data;
     }
-    case "CREAT":{
+    case "CREATE":{
       return[action.data, ...state];
     }
     case "UPDATE":{
@@ -74,7 +74,7 @@ const App = () => {
   const onCreate = (date, content, emotionId) => {
     dispatch({
       type:"CREATE",
-      date:{
+      data:{
         id:idRef.current,
         date:new Date(date).getTime(),
         content,
@@ -120,7 +120,7 @@ const App = () => {
               <Route path='/' element={<Home />} />
               <Route path='/new' element={<New />} />
               <Route path='/diary/:id' element={<Diary />} />
-              <Route path='/edit' element={<Edit />} />
+              <Route path='/edit/:id' element={<Edit />} />
             </Routes>
 
             {/* <div>
