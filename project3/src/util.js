@@ -4,7 +4,8 @@ import emotion3 from './img/emotion3.png';
 import emotion4 from './img/emotion4.png';
 import emotion5 from './img/emotion5.png';
 
-export const getEmotionImagById = (emotionId) => {
+
+export const getEmotionImgById = (emotionId) => {
     const targetEmotionId = String(emotionId);
 
     switch(targetEmotionId){
@@ -21,7 +22,7 @@ export const getEmotionImagById = (emotionId) => {
         default:
             return null;
     }
-};
+}; 
 
 export const getFormattedDate = (targetDate) => {
     let year = targetDate.getFullYear();
@@ -37,49 +38,51 @@ export const getFormattedDate = (targetDate) => {
     return `${year}-${month}-${date}`
 };
 
+
 export const emotionList = [
     {
         id:1,
         name:"완전 좋음",
-        img:getEmotionImagById(1),
+        img:getEmotionImgById(1),
     },
     {
         id:2,
         name:"좋음",
-        img:getEmotionImagById(2),
+        img:getEmotionImgById(2),
     },
     {
         id:3,
         name:"그럭저럭",
-        img:getEmotionImagById(3),
+        img:getEmotionImgById(3),
     },
     {
         id:4,
         name:"나쁨",
-        img:getEmotionImagById(4),
+        img:getEmotionImgById(4),
     },
     {
         id:5,
         name:"끔찍함",
-        img:getEmotionImagById(5),
+        img:getEmotionImgById(5),
   },
 ];
 
 
 export const getMonthRangeByDate = (date) => {
-    const beginTimeStamp = new Date(
-        date.getFullYear(),
-        date.getMonth(),
-        1
-    ).getTime();
+    const beginTimeStamp = new Date(      // Date는 내장 객체이기에 import 없이 바로 사용할 수 있다.
+        date.getFullYear(), //연도
+        date.getMonth(),    //이번 달 (0부터 시작)
+        1                   //1일 
+    ).getTime();            //timestamp(ms)로 변환
+
+    //이번 달의 끝(마지막 날 23:59:59)
     const endTimeStamp = new Date(
         date.getFullYear(),
-        date.getMonth() + 1,
-        0,
+        date.getMonth() + 1,//다음 달
+        0,                  //"0일" → 전 달의 마지막 날 (즉, 이번 달의 마지막 날을 구하기 위한 트릭)
         23,
         59,
         59
     ).getTime();
-    
     return { beginTimeStamp, endTimeStamp };
 };
