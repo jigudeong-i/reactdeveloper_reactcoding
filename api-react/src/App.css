@@ -1,0 +1,36 @@
+.App {
+  max-width: 1024px;
+  margin:30px auto;
+  padding:20px;
+  font-family: 'Segoe UI', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h3{
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.App-table{
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.App-table th, .App-table td{
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+.App-table th{
+  background-color: #f5f5f5;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.App-table tbody tr:nth-child(even){
+  background-color: #f9f9f9;
+}
+
+.App-table tbody tr:hover{
+  background-color: rgba(255, 255, 0, 0.12);
+}
