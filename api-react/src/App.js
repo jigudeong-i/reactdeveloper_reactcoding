@@ -3,7 +3,7 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import Button from "react-bootstrap/Button";
 
-const url = 'http://apis.data.go.kr/6260000/WalkingService/getWalkingKr?serviceKey=37e276a5a628951fdef2a0eba3f51cae64effac405a5bf069b2a2de5a66dcca2&numOfRows=10&pageNo=1&resultType=json'
+const url = 'http://apis.data.go.kr/6480000/gyeongnammuseum/gyeongnammuseumList?serviceKey=37e276a5a628951fdef2a0eba3f51cae64effac405a5bf069b2a2de5a66dcca2&pageNo=1&numOfRows=5&resultType=json'
 const App = () => {
   const[result,setResult] = useState([]);
   useEffect(() => {
@@ -11,7 +11,8 @@ const App = () => {
     fetch(url)
     .then(response => response.json())
     .then(data => {
-      console.log(data.getWalkingKr.item.map((it) => it.MAIN_TITLE));
+      //console.log(data.getWalkingKr.item.map((it) => it.MAIN_TITLE));
+      setResult(data.gyeongnammuseumList.body.items.item)
     })
     .catch(error => console.log(error));
   },[]);
@@ -19,7 +20,7 @@ const App = () => {
   return(
     <div className="App">
     
-      {/* <h3>경상남도_박물관 정보</h3>
+      <h3>경상남도_박물관 정보</h3>
       <table className="App-table">
         <thead>
           <tr>
@@ -43,9 +44,9 @@ const App = () => {
             ))
           }
         </tbody>
-      </table> */}
+      </table>
 
-      <Button variant="primary">기본 버튼</Button>
+      {/* <Button variant="primary">기본 버튼</Button> */}
 
     </div>
   );
