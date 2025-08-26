@@ -12,6 +12,11 @@ const Home = () => {
     const [pivotDate, setPivotDate] = useState(new Date());
     const headerTitle = `${pivotDate.getFullYear()}년 ${pivotDate.getMonth() + 1}월`;
 
+
+
+
+
+
     useEffect(() => {
         if (data.length >= 1) {
             const { beginTimeStamp, endTimeStamp } = getMonthRangeByDate(pivotDate);
@@ -24,6 +29,14 @@ const Home = () => {
             setFilteredData([]);
         }
     }, [data, pivotDate]);
+
+
+
+
+
+
+
+
 
     // <버튼, >버튼 
     const onIncreaseMonth = () => {
