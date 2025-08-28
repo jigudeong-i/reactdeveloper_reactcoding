@@ -7,18 +7,13 @@ import { getMonthRangeByDate } from "../util";
 import DiaryList from "../component/DiaryList";
 
 const Home = () => {
-    const data = useContext(DiaryStateContext);
+    const data = useContext(DiaryStateContext); // MOCK DATA 가져오기
     const [filteredData, setFilteredData] = useState([]);
     const [pivotDate, setPivotDate] = useState(new Date());
     const headerTitle = `${pivotDate.getFullYear()}년 ${pivotDate.getMonth() + 1}월`;
 
-
-
-
-
-
     useEffect(() => {
-        if (data.length >= 1) {
+        if (data.length >= 1) {  //데이터가 1개라도 있으면 배열로 보여주겠다. 
             const { beginTimeStamp, endTimeStamp } = getMonthRangeByDate(pivotDate);
             setFilteredData(
                 data.filter(
@@ -28,14 +23,7 @@ const Home = () => {
         } else {
             setFilteredData([]);
         }
-    }, [data, pivotDate]);
-
-
-
-
-
-
-
+    }, [data, pivotDate]);   //이 배열에 변화가 생길때마다 위 함수 실행. 즉, 내가 데이터를 입력할 때마다 위 함수 실행. 
 
 
     // <버튼, >버튼 
