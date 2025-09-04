@@ -1,11 +1,11 @@
 import { useContext } from "react"
-import { stateContext } from "../App"
+// import { stateContext } from "../App"
 
 import Table from 'react-bootstrap/Table';
 import BusantravelItem from './BusantravelItem';
 
 const BusanTravelList = () => {
-    const result = useContext(stateContext);
+    // const result = useContext(stateContext);
 
     return(
         <Table striped bordered hover size="sm">
@@ -18,13 +18,13 @@ const BusanTravelList = () => {
                     <th className='table-td-width2'>교통정보</th>
                 </tr>
             </thead>
-            <tbody>
+            {/* <tbody>
                 {
                     result.map( item => (
                         <BusantravelItem key = {item.UC_SEQ}{...item}/>
                     ))
                 }
-            </tbody>
+            </tbody> */}
         </Table>
     );
 };
