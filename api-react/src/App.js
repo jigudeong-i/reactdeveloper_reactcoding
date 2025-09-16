@@ -7,9 +7,9 @@
 // import List from "./pages/List";
 
 import React, { useEffect, useState } from "react";
-import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import 'bootstrap/dist/css/bootstrap.min.css';
+// import { Route, Routes } from "react-router-dom";
+// import Home from "./pages/Home";
+// import 'bootstrap/dist/css/bootstrap.min.css';
 
 // export const stateContext = React.createContext();
 
