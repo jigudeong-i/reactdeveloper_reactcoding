@@ -11,7 +11,6 @@ const BasicMenu = () => {
                     <li className="pr-6 text-2xl">
                         <Link to={"/about"}>About</Link>
                     </li>
-                    {/* /todo/ 작성 시작시 */}
                     <li className="pr-6 text-2xl">
                         <Link to={'/todo/'}>Todo</Link>
                     </li>
